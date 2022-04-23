@@ -1,9 +1,8 @@
 {
   "version": 2,
   "projects": {
-    "api": "apps/api",
-    "api-interfaces": "libs/api-interfaces",
-    "quark": "apps/quark",
-    "quark-e2e": "apps/quark-e2e"
+    "quark-service": "apps/quark-service",
+    "quark-web": "apps/quark-web",
+    "quark-web-e2e": "apps/quark-web-e2e"
   }
 }
