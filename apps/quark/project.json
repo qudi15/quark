@@ -1,0 +1,91 @@
+{
+  "projectType": "application",
+  "root": "apps/quark",
+  "sourceRoot": "apps/quark/src",
+  "prefix": "quark",
+  "targets": {
+    "build": {
+      "executor": "@angular-devkit/build-angular:browser",
+      "outputs": ["{options.outputPath}"],
+      "options": {
+        "outputPath": "dist/apps/quark",
+        "index": "apps/quark/src/index.html",
+        "main": "apps/quark/src/main.ts",
+        "polyfills": "apps/quark/src/polyfills.ts",
+        "tsConfig": "apps/quark/tsconfig.app.json",
+        "inlineStyleLanguage": "scss",
+        "assets": ["apps/quark/src/favicon.ico", "apps/quark/src/assets"],
+        "styles": ["apps/quark/src/styles.scss"],
+        "scripts": []
+      },
+      "configurations": {
+        "production": {
+          "budgets": [
+            {
+              "type": "initial",
+              "maximumWarning": "500kb",
+              "maximumError": "1mb"
+            },
+            {
+              "type": "anyComponentStyle",
+              "maximumWarning": "2kb",
+              "maximumError": "4kb"
+            }
+          ],
+          "fileReplacements": [
+            {
+              "replace": "apps/quark/src/environments/environment.ts",
+              "with": "apps/quark/src/environments/environment.prod.ts"
+            }
+          ],
+          "outputHashing": "all"
+        },
+        "development": {
+          "buildOptimizer": false,
+          "optimization": false,
+          "vendorChunk": true,
+          "extractLicenses": false,
+          "sourceMap": true,
+          "namedChunks": true
+        }
+      },
+      "defaultConfiguration": "production"
+    },
+    "serve": {
+      "executor": "@angular-devkit/build-angular:dev-server",
+      "configurations": {
+        "production": {
+          "browserTarget": "quark:build:production"
+        },
+        "development": {
+          "browserTarget": "quark:build:development"
+        }
+      },
+      "defaultConfiguration": "development",
+      "options": {
+        "proxyConfig": "apps/quark/proxy.conf.json"
+      }
+    },
+    "extract-i18n": {
+      "executor": "@angular-devkit/build-angular:extract-i18n",
+      "options": {
+        "browserTarget": "quark:build"
+      }
+    },
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "options": {
+        "lintFilePatterns": ["apps/quark/**/*.ts", "apps/quark/**/*.html"]
+      }
+    },
+    "test": {
+      "executor": "@nrwl/jest:jest",
+      "outputs": ["coverage/apps/quark"],
+      "options": {
+        "jestConfig": "apps/quark/jest.config.ts",
+        "passWithNoTests": true
+      }
+    }
+  },
+  "tags": []
+}
