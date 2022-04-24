@@ -16,7 +16,12 @@
         "inlineStyleLanguage": "scss",
         "assets": [
           "apps/quark-web/src/favicon.ico",
-          "apps/quark-web/src/assets"
+          "apps/quark-web/src/assets",
+          {
+            "glob": "**/*",
+            "input": "./node_modules/@ant-design/icons-angular/src/inline-svg/",
+            "output": "/assets/"
+          }
         ],
         "styles": ["apps/quark-web/src/styles.scss"],
         "scripts": []
